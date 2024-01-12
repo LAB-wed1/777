@@ -1,10 +1,7 @@
 <?php
-// เริ่ม session
 session_start();
 
-// ตรวจสอบว่ามีการส่งค่าฟอร์มมาหรือไม่
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // กำหนดตัวแปรสำหรับรับค่า
     $login = $_POST['login'];
     $password = $_POST['password'];
     $language = $_POST['language'];
@@ -41,30 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['interest'] = $interest;
     $_SESSION['comment'] = $comment;
 } else {
-    // ถ้าไม่มีการส่งค่าฟอร์มมา แสดงฟอร์มให้กรอก
-    ?>
-    <form method="post" action="">
-        <label for="login">Login:</label>
-        <input type="text" id="login" name="login" required><br>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
-
-        <label for="language">Language:</label>
-        <input type="text" id="language" name="language" required><br>
-
-        <label for="gender">Gender:</label>
-        <input type="text" id="gender" name="gender" required><br>
-
-        <label for="interest">Interest:</label>
-        <input type="text" id="interest" name="interest" required><br>
-
-        <label for="comment">Comment:</label>
-        <textarea id="comment" name="comment" rows="4" required></textarea><br>
-
-        <button type="submit">Submit</button>
-    </form>
-<?php
+    // ถ้าไม่มีการส่งค่าฟอร์มมา แสดงข้อความ
+    echo "ไม่มีข้อมูลที่ส่งมาจากฟอร์ม";
 }
 
 // ตรวจสอบว่ามีข้อมูลใน session หรือไม่
@@ -75,9 +50,4 @@ if (!empty($_SESSION)) {
     echo "<li>Login: {$_SESSION['login']}</li>";
     echo "<li>Password: {$_SESSION['password']}</li>";
     echo "<li>Language: {$_SESSION['language']}</li>";
-    echo "<li>Gender: {$_SESSION['gender']}</li>";
-    echo "<li>Interest: {$_SESSION['interest']}</li>";
-    echo "<li>Comment: {$_SESSION['comment']}</li>";
-    echo "</ul>";
-}
-?>
+    echo "<li>Gender: {$_SESSION['

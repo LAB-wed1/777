@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<form action="form-receive-data.php" method="post">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form รับข้อมูลและแสดงผล</title>
+</head>
+
+<body>
+    <form action="form-receive-data.php" method="post">
+        <h1>Register</h1>
+
+        <div class="form-group">
+            <label for="login">Login:</label>
+            <input type="text" name="login" id="login" placeholder="Login">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" placeholder="Password">
+        </div>
+
+        <div class="form-group">
+            <label for="language">Language:</label>
+            <select name="language" id="language">
+                <option value="th">ภาษาไทย</option>
+                <option value="en">ภาษาอังกฤษ</option>
+            </select>
+        </div>
+            
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <input type="radio" name="gender" id="male" value="male"> ชาย
+            <input type="radio" name="gender" id="female" value="female"> หญิง
+        </div>
+
+        <div class="form-group">
+            <label for="interest">Interest:</label>
+            <select name="interest" id="interest">
+                <option value="movies/tv/music">ภาพยนตร์/ทีวี/ดนตรี</option>
+                <option value="sports">กีฬา</option>
+                <option value="travel">ท่องเที่ยว</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea name="comment" id="comment" placeholder="Comment"></textarea>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
