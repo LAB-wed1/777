@@ -12,17 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $interest = $_POST['interest'];
     $comment = $_POST['comment'];
 
-    // แสดงผลที่ผู้ใช้กรอก
-    echo "<h2>ข้อมูลที่คุณกรอก</h2>";
-    echo "<ul>";
-    echo "<li>Login: $login</li>";
-    echo "<li>Password: $password</li>";
-    echo "<li>Language: $language</li>";
-    echo "<li>Gender: $gender</li>";
-    echo "<li>Interest: $interest</li>";
-    echo "<li>Comment: $comment</li>";
-    echo "</ul>";
-
     // ตรวจสอบความยาวของข้อมูล login
     if (strlen($login) < 6) {
         echo "Login ต้องยาวอย่างน้อย 6 ตัวอักษร<br>";
@@ -64,7 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <button type="submit">Submit</button>
     </form>
-<?php
+
+    <?php
 }
 
 // ตรวจสอบว่ามีข้อมูลใน session หรือไม่
@@ -79,5 +69,30 @@ if (!empty($_SESSION)) {
     echo "<li>Interest: {$_SESSION['interest']}</li>";
     echo "<li>Comment: {$_SESSION['comment']}</li>";
     echo "</ul>";
+
+    // เพิ่มปุ่ม "รีเฟรช" และ "ลบ Session"
+    echo '<form method="post" action="">';
+    echo '<input type="submit" name="refresh" value="รีเฟรช">';
+    echo '<input type="submit" name="logout" value="ลบ Session">';
+    echo '</form>';
+}
+
+// ตรวจสอบว่ามีการกดปุ่ม "ลบ Session" หรือไม่
+if (isset($_POST['logout'])) {
+    // ลบข้อมูลที่เก็บใน session
+    session_destroy();
+    // ส่งกลับไปที่หน้าฟอร์ม
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    exit();
+}
+
+// ตรวจสอบว่ามีการกดปุ่ม "รีเฟรช" หรือไม่
+if (isset($_POST['refresh'])) {
+    // ลบข้อมูลที่เก็บใน session
+    session_destroy();
+    // ส่งกลับไปที่หน้าฟอร์ม
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    exit();
 }
 ?>
+    
